@@ -1,0 +1,9 @@
+package main.com.unrc.app.models;
+
+import org.javalite.activejdbc.Model;
+
+public class OwnerBuilding extends Model {
+  static{
+      validatePresenceOf("first_name", "last_name","city","neighborhood","street","email","phone_number","idRealState");
+  }
+}
