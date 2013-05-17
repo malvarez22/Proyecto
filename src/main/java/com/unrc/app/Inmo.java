@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class Inmo {
     public static void main( String[] args )
     {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "eliana");
 
         User e = new User();
         e.set("email", "user@email.com");
