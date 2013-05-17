@@ -1,4 +1,4 @@
-package com.unrc.app;
+package test.java.com.unrc.app;
 
 import org.junit.After;
 import org.junit.Assert;
