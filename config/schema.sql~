@@ -1,0 +1,107 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  email VARCHAR(60),
+  first_name VARCHAR(56),
+  last_name VARCHAR(56)
+)ENGINE=innoDB;
+INSERT INTO `users` (`email`,`first_name`,`last_name`) VALUES 
+ ('', '', ''),
+ ('', '', ''),
+ ('', '', '');
+DROP TABLE IF EXISTS dueño;
+CREATE TABLE dueño(  
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  telefono VARCHAR(20),
+  nombre VARCHAR(60),
+  apellido VARCHAR(60),
+  ciudad VARCHAR(60),
+  barrio VARCHAR(60),
+  calle VARCHAR(60),
+  email VARCHAR(30)
+)ENGINE=innoDB;
+
+
+INSERT INTO `dueño` (`telefono`,`nombre`,`apellido`,`email`) VALUES 
+ ('', '', '', ''),
+ ('', '', '', ''),
+ ('', '', '', '');
+
+DROP TABLE IF EXISTS inmobiliaria;
+CREATE TABLE inmobiliaria(
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  nombre VARCHAR(60),
+  ciudad VARCHAR(60),
+  barrio VARCHAR(60),
+  calle VARCHAR(60),
+  telefono VARCHAR(20),
+  email VARCHAR(20),
+  sitio_Web VARCHAR(30),
+  id_dueño int(11),
+FOREIGN KEY (id_dueño) REFERENCES dueño(id) ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=innoDB;
+
+INSERT INTO `inmobiliaria` (`id`,`nombre`,`calle`,`telefono`,`email`, `sitio_web`, `id_dueño`) VALUES 
+ ('01', 'Juan', 'Alem 234', '4666852', 'matias@hotmail.com', 'www.langosta.com', '001');
+
+DROP TABLE IF EXISTS dueñoInmueble;
+CREATE TABLE dueñoInmueble(
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  nombre VARCHAR(60),
+  apellido VARCHAR(60),
+  
+  ciudad VARCHAR(60),
+  barrio VARCHAR(60),
+  calle VARCHAR(60),
+  email VARCHAR(30),
+  telefono VARCHAR(20),
+ id_inmobiliaria int(11),
+ FOREIGN KEY (id_inmobiliaria) REFERENCES inmobiliaria(id) ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=innoDB;
+
+DROP TABLE IF EXISTS inmueble;
+CREATE TABLE inmueble(  
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  ciudad VARCHAR(60),
+  barrio VARCHAR(60),
+  calle VARCHAR(60),
+  texto_descriptivo VARCHAR(80),
+  precio int (12),
+  tipo ENUM ('campo','quinta', 'casa', 'departamento','oficina','cochera'),
+  situacion ENUM('VENTA','ALQUILER'),
+  id_dueñoInmueble int(11),
+  id_inmobiliaria int (11),
+  FOREIGN KEY (id_inmobiliaria) REFERENCES inmobiliaria(id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (id_dueñoInmueble) REFERENCES dueñoInmueble(id) ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=innoDB;
+
+
+DROP TABLE IF EXISTS anuncio;
+CREATE TABLE anuncio(  
+  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
+  idDueñoInmueble int(11),
+  idInmueble int(11),
+  FOREIGN KEY (idInmueble) REFERENCES inmueble(id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (idDueñoInmueble) REFERENCES dueñoInmueble(id) ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=innoDB;
+
+
+
+
+
+INSERT INTO `dueñoInmueble` (`nombre`,`apellido`,`calle`,`email`, `telefono`) VALUES 
+ ('', '', '', '', ''),
+ ('', '', '', '', ''),
+ ('', '', '', '', ''),
+ ('', '', '', '', '');
+/*!40000 ALTER TABLE `dueñoInmueble` ENABLE KEYS*/ ;
+
+INSERT INTO `inmueble` (`calle`,`texto_descriptivo`,`precio`,`tipo`, `situacion`) VALUES 
+ ('', '', 12, 'campo', 'VENTA'),
+ ('', '', 2, 'quinta', 'ALQUILER'),
+ ('', '', 3, 'departamento', 'VENTA'),
+ ('', '', 3, 'casa', 'ALQUILER'),
+ ('', '', 4, 'casa', 'VENTA'),
+ ('', '', 4, 'oficina', 'ALQUILER'),
+ ('', '', 5, 'quinta', 'VENTA');
+/*!40000 ALTER TABLE `inmueble` ENABLE KEYS*/ ;

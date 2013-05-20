@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS anuncio;
+DROP TABLE IF EXISTS inmueble;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS dueñoinmueble;
+DROP TABLE IF EXISTS inmobiliaria;
+DROP TABLE IF EXISTS dueño;
+
+
+

@@ -1,42 +1,51 @@
 package com.unrc.app;
 
-import com.unrc.app.models.RealState;
+import com.unrc.app.models.*;
 
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.spi.*;
 
 public class Inmobiliaria {
 
 //metodos insertar,modificar,eliminar inmobiliaria    
-	public static void insertar(String nombre,String ciudad,String barrio,String calle,String telefono,String email,String sitio_Web,String nombreDueño,String apellidoDueño){
+	public static void insertar(String first_name,String city,String neighborhood,String street,String phone_number,String email,String webSite,int id_owner){
 		RealState inmo=new RealState();
 		Owner d=new Owner();
-		inmo.set("nombre",nombre);
-		inmo.set("ciudad",ciudad); 
-		inmo.set("barrio",barrio);
-		inmo.set("calle",calle);
-
-		inmo.set("telefono",telefono);
+		inmo.set("first_name",first_name);
+		inmo.set("city",city); 
+		inmo.set("neighborhood",neighborhood);
+		inmo.set("street",street);
+		inmo.set("phone_number",phone_number);
 		inmo.set("email",email);
-		inmo.set("sitio_Web",sitio_Web);
-		d.find("nombre = ?","apellido=?" ,nombreDueño);
-		inmo.set("id_dueño",d.get(id));
-			
+		inmo.set("webSite",webSite);
+		d=d.findById(id_owner);
+		inmo.set("id_owners",d.getId());
+		inmo.saveIt();			
 	}
-	
-	
-	
-	public static void modificar(String nombre,String elemento, String  cambio){
-		RealState inomo=new RealState();
-		inmo.find("nombre= ?",nombre);
-		inmo.set(elemento,cambio);
-	}
-	
-	public static void eliminar(String nombre){
+
+	public static void modificar(int id,String element, String  change){
 		RealState inmo=new RealState();
-		inmo.find("nombre= ?",nombre);
-		inmo.delete(nombre);
+		inmo=inmo.findById(id);
+		if (inmo!=null){
+			inmo.set(element,change);
+			inmo.saveIt();
+		}
+
 	}
+	
+	
+
+	public static void eliminar(int id){
+		RealState inmo=new RealState();
+		inmo=inmo.findById(id);
+		if (inmo!=null){
+			inmo.deleteCascade();
+		}
+
+	}
+
+
+	
+}	
 	
 	

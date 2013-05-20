@@ -1,44 +1,58 @@
 package com.unrc.app;
 
-import com.unrc.app.models.OwnerBuilding;
+
+
+
+import com.unrc.app.models.*;
 
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class DueñonInmueble {
+import org.slf4j.spi.*;
+
+public class DueñoInmueble {
 
 //metodos insertar,modificar,eliminar dueño inmobiliaria    
-	public static void insertar(String nombre,String apellido,String ciudad,String barrio,String calle,String telefono,String email,String inmobiliaria){
-		OwnerBuilding inmo=new OwnerBuilding();
+	public static void insertar(String first_name,String last_name,String city,String phone_number,String neighborhood,String street,String email, int id){
+		OwnerBuilding o=new OwnerBuilding();
 		RealState d= new RealState();
-		inmo.set("nombre",nombre);
-		inmo.set("apellido",apellido);
-
-		inmo.set("ciudad",ciudad); 
-		inmo.set("barrio",barrio);
-		inmo.set("calle",calle);
-
-		inmo.set("telefono",telefono);
-		inmo.set("email",email);	
-		
-		d.find("nombre",inmobiliaria);
-		inmo.set("id_inmobiliaria",d.get(id));
+		o.set("first_name",first_name);
+		o.set("last_name",last_name);
+		o.set("city",city);
+		o.set("phone_number",phone_number);
+		o.set("neighborhood",neighborhood);
+		o.set("street",street);		
+		o.set("email",email);
+		d = d.findById(id);
+		o.set("id_realStates",d.getId());//para ver a que inmobiliaria pertence
+		o.saveIt();
 		
 	}
-	
-	
-	
-	public static void modificar(String nombre,String apellido,String elemento, String  cambio){
-		Owner inmo=new Owner();
-		inmo.find("nombre= ?",nombre);
-		inmo.set(elemento,cambio);
+
+
+
+
+
+	public static void modificar(int id,String element, String  change){
+		OwnerBuilding o=new OwnerBuilding();
+		o=o.findById(id);
+		if (o!=null){
+			o.set(element,change);
+			o.saveIt();
+		}
+
 	}
-	
-	public static void eliminar(String nombre,String apellido){
-		Owner inmo=new Owner();
-		inmo.find("nombre= ?",nombre);
-		inmo.delete(nombre);
+
+
+
+	public static void eliminar(int id){
+		OwnerBuilding o=new OwnerBuilding();
+		o=o.findById(id);
+		if (o!=null){
+			o.deleteCascade();
+		}
+
 	}
+
+}	
 	
 	

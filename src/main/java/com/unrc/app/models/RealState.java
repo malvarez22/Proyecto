@@ -1,6 +1,6 @@
-package main.com.unrc.app.models;
+package com.unrc.app.models;
 
-import org.javalite.*;
+
 import org.javalite.activejdbc.Model;
 public class RealState extends Model {
   static{

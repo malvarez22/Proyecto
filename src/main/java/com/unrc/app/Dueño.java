@@ -3,37 +3,43 @@ package com.unrc.app;
 import com.unrc.app.models.Owner;
 
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.spi.*;
 
 public class Dueño {
 
 //metodos insertar,modificar,eliminar dueño inmobiliaria    
-	public static void insertar(String nombre,String apellido,String ciudad,String barrio,String calle,String telefono,String email){
+	public static void insertar(String first_name,String last_name,String city,String phone_number,String neighborhood,String street,String email){
 		Owner inmo=new Owner();
-		inmo.set("nombre",nombre);
-		inmo.set("apellido",apellido);
+		inmo.set("first_name",first_name);
+		inmo.set("last_name",last_name);        
+		inmo.set("city",city); 
+		inmo.set("phone_number",phone_number);
+		inmo.set("neighborhood",neighborhood);
+		inmo.set("street",street);
+		inmo.set("email",email);
+		inmo.saveIt();			
+	}
 
-		inmo.set("ciudad",ciudad); 
-		inmo.set("barrio",barrio);
-		inmo.set("calle",calle);
+	
+	
+	public static void modificar(int id,String element, String  change){
+		Owner inmo=new Owner();
+		inmo=inmo.findById(id);
+		if (inmo!=null){
+			inmo.set(element,change);
+			inmo.saveIt();			
 
-		inmo.set("telefono",telefono);
-		inmo.set("email",email);			
+		}
+		
 	}
 	
-	
-	
-	public static void modificar(String nombre,String apellido,String elemento, String  cambio){
+	public static void eliminar(int id){
 		Owner inmo=new Owner();
-		inmo.find("nombre= ?",nombre);
-		inmo.set(elemento,cambio);
+		inmo=inmo.findById(id);
+		if (inmo!=null){
+			inmo.deleteCascade();
+		}
+
 	}
-	
-	public static void eliminar(String nombre,String apellido){
-		Owner inmo=new Owner();
-		inmo.find("nombre= ?",nombre);
-		inmo.delete(nombre);
-	}
-	
+}	
 	

@@ -1,55 +1,52 @@
-
-
 package com.unrc.app;
 
 import com.unrc.app.models.Building;
-
+import com.unrc.app.models.OwnerBuilding;
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.spi.*;
 
 public class Inmueble {
-
-
-  id  int(11) NOT NULL  auto_increment PRIMARY KEY,
-  ciudad VARCHAR(60),
-  barrio VARCHAR(60),
-  calle VARCHAR(60),
-  texto_descriptivo text,
-  precio int (12),
-  tipo ENUM ('campo','quinta', 'casa', 'departamento','oficina','cochera'),
-  situacion ENUM('VENTA','ALQUILER'),
-  id_dueñoInmueble int(11),
-  id_inmobiliaria int (11),
 //metodos insertar,modificar,eliminar inmueble    
-	public static void insertar(String ciudad,String barrio,String calle,String texto,Integer precio,String tipo,String situacion,String nombreDueño,String apellidoDueño){
-		Building inmo=new Building();
-		OwnerBuilding d= new ObwnerBuilding();
 
-		inmo.set("ciudad",ciudad); 
-		inmo.set("barrio",barrio);
-		inmo.set("calle",calle);
+	enum Type {campo,quinta,casa,departamento,oficina,cochera}
+	public void insertar(String city,String neighborhood,String street,String descriptive_text,int price,String isType,String situation,int id_ownersBuilding){
+		Building b=new Building();
+		OwnerBuilding ob= new OwnerBuilding();
+		
+		b.set("city",city); 
+		b.set("neighborhood",neighborhood);
+		b.set("street",street);
+		b.set("descriptive_text",descriptive_text);
+		b.set("price",price);
+			
+		b.set("isType",isType);
+		b.set("situation",situation);
+		ob=ob.findById(id_ownersBuilding);
+		b.set("id_ownersBuilding",ob.getId());
+		b.saveIt();			
+	
+	}
+	
+	
 
-		inmo.set("texto_descriptivo",texto);
-		inmo.set("precio",precio);	
-		inmo.set("tipo",tipo);
-		inmo.set("situacion",situacion);
-		d.find("nombre= ?"nombreDueño);
-		inmo.set("id_dueño",id);
+	public static void modificar(int id,String element, String  change){
+		OwnerBuilding ob= new OwnerBuilding();
+		ob=ob.findById(id);
+		if (ob!=null){
+			ob.set(element,change);
+			ob.saveIt();
+		}
+
 	}
 	
-	
-	
-	public static void modificar(String nombre,String apellido,String elemento, String  cambio){
-		Building inmo=new Building();
-		inmo.find("nombre= ?",nombre);
-		inmo.set(elemento,cambio);
+
+	public static void eliminar(int id){
+		OwnerBuilding ob=new OwnerBuilding();
+		ob=ob.findById(id);
+		if (ob!=null){
+			ob.deleteCascade();
+		}
+
 	}
 	
-	public static void eliminar(String nombre,String apellido){
-		Building inmo=new Building();
-		inmo.find("nombre= ?",nombre);
-		inmo.delete(nombre);
-	}
-	
-	
+}	
