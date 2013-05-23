@@ -24,7 +24,6 @@ CREATE TABLE owners(
   email VARCHAR(30)
 )ENGINE=innoDB;
 
-
 INSERT INTO `owners` (`first_name`,`last_name`,`city`,`phone_number`,`neighborhood`,`street`,`email`) VALUES 
  ('', '', '', '', '', '', ''),
  ('', '', '', '', '', '', ''),
@@ -58,7 +57,28 @@ CREATE TABLE owner_buildings(
  FOREIGN KEY (id_realStates) REFERENCES real_states(id) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=innoDB;
 
+DROP TABLE IF EXISTS situations;
+CREATE TABLE situations(
+	id_situations int(5) NOT NULL PRIMARY KEY,
+	tipo VARCHAR(34)
+)ENGINE=innoDB;
 
+INSERT INTO `situations` (`id_situations`,`tipo`) VALUES 
+ ('1','Venta'),
+ ('2','Alquiler');
+ 
+DROP TABLE IF EXISTS is_types;
+CREATE TABLE is_types(
+	idType int(5) NOT NULL PRIMARY KEY,
+	tipo VARCHAR(34)
+)ENGINE=innoDB;
+
+INSERT INTO `is_types` (`idType`,`tipo`) VALUES 
+ ('1','Casa'),
+ ('2','Departamento'),
+ ('3', 'Oficina'),
+ ('4', 'Cochera'),
+ ('5', 'Campo');
 
 DROP TABLE IF EXISTS buildings;
 CREATE TABLE buildings(  
@@ -68,10 +88,12 @@ CREATE TABLE buildings(
   street VARCHAR(60),
   descriptive_text VARCHAR(80),
   price int (12),
-  isType ENUM ('campo','quinta', 'casa', 'departamento','oficina','cochera'),
-  situation ENUM('VENTA','ALQUILER'),
-  id_ownersBuilding int (11),
-  FOREIGN KEY (id_ownersBuilding) REFERENCES owner_buildings(id) ON UPDATE CASCADE ON DELETE CASCADE
+  FKid_situation int(2),
+  FKid_ownersBuilding int (11),
+  FKid_isType int(5),
+  FOREIGN KEY (FKid_ownersBuilding) REFERENCES owner_buildings(id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (FKid_isType) REFERENCES is_types(idType) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (FKid_situation) REFERENCES situations(id_situations) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=innoDB;
 
 
