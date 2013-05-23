@@ -6,5 +6,15 @@ public class Owner extends Model {
   static{
       validatePresenceOf("first_name", "last_name","city","phone_number","neighborhood","phone_number","street","email");
   }
-
+  //check email format
+  static{
+      validateEmailOf("email");
+  }
+  static{
+	  validateNumericalityOf("phone_number")
+	  .allowNull(true).greaterThan(0)
+      .lessThan(25).onlyInteger()
+	  .message("incorrect 'Phone_number'");
+	    }
 }
+
