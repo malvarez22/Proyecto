@@ -1,6 +1,6 @@
 package test.java.com.unrc.app;
 
-import main.com.unrc.app.models.Building;
+import com.unrc.app.models.Building;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -35,12 +35,11 @@ public class BuildingSpec{
         the(building.errors().get("street")).shouldBeEqual("value is missing");
         the(building.errors().get("descriptive_text")).shouldBeEqual("value is missing");
         the(building.errors().get("price")).shouldBeEqual("value is missing");
-        the(building.errors().get("isType")).shouldBeEqual("value is missing");
-        the(building.errors().get("situation")).shouldBeEqual("value is missing");
-        the(building.errors().get("id_realState")).shouldBeEqual("value is missing");
+        the(building.errors().get("id_situation")).shouldBeEqual("value is missing");
         the(building.errors().get("id_ownerBuiling")).shouldBeEqual("value is missing");
+        the(building.errors().get("id_isType")).shouldBeEqual("value is missing");
         //set missing values
-        building.set("city", "Cordoba");
+        building.set("city","cordoba","neighborhood","barrio","street","street","descriptive_text","bueno","price",23,"id_situation",1,"id_ownersBuilding",1,"id_isType",4);
 
         //all is good:
         the(building).shouldBe("valid");

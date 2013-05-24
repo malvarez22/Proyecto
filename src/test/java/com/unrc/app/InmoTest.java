@@ -1,4 +1,4 @@
-package test.java.com.unrc.app;
+package com.unrc.app;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -13,6 +13,7 @@ public class InmoTest {
 
     @Test
     public void testTest(){
+	
         assertEquals(10, 10);
     }
 

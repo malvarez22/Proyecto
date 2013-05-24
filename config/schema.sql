@@ -18,7 +18,7 @@ CREATE TABLE owners(
   first_name VARCHAR(60),
   last_name VARCHAR(60),
   city VARCHAR(60),
-  phone_number VARCHAR(20),
+  phone_number INT(25),
   neighborhood VARCHAR(60),
   street VARCHAR(60),
   email VARCHAR(30)
@@ -36,7 +36,7 @@ CREATE TABLE real_states(
   city VARCHAR(60),
   neighborhood VARCHAR(60),
   street VARCHAR(60),
-  phone_number VARCHAR(20),
+  phone_number INT(25),
   email VARCHAR(20),
   webSite VARCHAR(30),
   id_owners int(11),
@@ -52,7 +52,7 @@ CREATE TABLE owner_buildings(
   neighborhood VARCHAR(60),
   street VARCHAR(60),
   email VARCHAR(30),
-  phone_number VARCHAR(20),
+  phone_number INT(25),
   id_realStates int(11),
  FOREIGN KEY (id_realStates) REFERENCES real_states(id) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=innoDB;
@@ -88,12 +88,12 @@ CREATE TABLE buildings(
   street VARCHAR(60),
   descriptive_text VARCHAR(80),
   price int (12),
-  FKid_situation int(2),
-  FKid_ownersBuilding int (11),
-  FKid_isType int(5),
-  FOREIGN KEY (FKid_ownersBuilding) REFERENCES owner_buildings(id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (FKid_isType) REFERENCES is_types(idType) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (FKid_situation) REFERENCES situations(id_situations) ON UPDATE CASCADE ON DELETE CASCADE
+  id_situation int(2),
+  id_ownersBuilding int (11),
+  id_isType int(5),
+  FOREIGN KEY (id_ownersBuilding) REFERENCES owner_buildings(id) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (id_isType) REFERENCES is_types(idType) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (id_situation) REFERENCES situations(id_situations) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=innoDB;
 
 

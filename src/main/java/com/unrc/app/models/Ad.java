@@ -1,4 +1,4 @@
-package main.com.unrc.app.models;
+package com.unrc.app.models;
 
 import org.javalite.activejdbc.Model;
 

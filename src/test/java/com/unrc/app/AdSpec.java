@@ -1,6 +1,6 @@
 package test.java.com.unrc.app;
 
-import main.com.unrc.app.models.Ad;
+import com.unrc.app.models.Ad;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -31,9 +31,11 @@ public class AdSpec{
         //check errors
         the(ad).shouldNotBe("valid");
         the(ad.errors().get("descriptive_text")).shouldBeEqual("value is missing");
+	the(ad.errors().get("id_Building")).shouldBeEqual("value is missing");
+	the(ad.errors().get("id_ownerBuilding")).shouldBeEqual("value is missing");
        
         //set missing values
-        ad.set("descriptive_text", "texto");
+        ad.set("descriptive_text", "texto","id_Building",1,"id_ownerBuilding",1);
 
         //all is good:
         the(ad).shouldBe("valid");

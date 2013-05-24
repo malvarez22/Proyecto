@@ -12,7 +12,7 @@ import org.slf4j.spi.*;
 public class DueñoInmueble {
 
 //metodos insertar,modificar,eliminar dueño inmobiliaria    
-	public static void insertar(String first_name,String last_name,String city,String phone_number,String neighborhood,String street,String email, int id){
+	public static void insertar(String first_name,String last_name,String city,int phone_number,String neighborhood,String street,String email, int id){
 		OwnerBuilding o=new OwnerBuilding();
 		RealState d= new RealState();
 		o.set("first_name",first_name);

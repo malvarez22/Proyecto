@@ -19,14 +19,16 @@ public class Inmo {
 
 /*en este bloque de codigo se prueban clases dueño e inmobiliaria*/
 	Dueño d = new Dueño();
-	d.insertar("a","b","c","d","e","f","g");
+	d.insertar("eliana","dominguez","Cordoba",154220674,"balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com");
+
 	d.eliminar(1);
 	d.modificar(78,"last_name","jorge");
 	
 	Inmobiliaria i=new Inmobiliaria();
+
 //si se quiere insertar con un dueño que no existe tira exception
 	//i.insertar("a","b","c","d","e","f","g",1);
-	i.insertar("a","b","c","d","e","f","g",2);
+	i.insertar("gutierrez Inmobiliaria","Cordoba","balaco","concejal barrera 7878",154220674,"e@hotmail.com","www.z.com",2);
 	i.eliminar(4);
 	i.modificar(2,"first_name","jorge");
 	
@@ -35,14 +37,15 @@ public class Inmo {
 
 
 	DueñoInmueble di = new DueñoInmueble();
-	di.insertar("a","b","c","d","e","f","g",1);
-	di.eliminar(1);
-	di.modificar(3,"last_name","jorge");
+	di.insertar("eliana","dominguez","Cordoba",154220674,"balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com",1);
+//	di.eliminar(1);
+//	di.modificar(3,"last_name","jorge");
 	
 	Inmueble inm = new Inmueble();
 //si se desea agregar un tipo diferente del enum creado lanza error
-//	inm.insertar("a","b","c","d",8,"f","g",1);
-	//inm.insertar("a","b","c",'campo',8,"f","g",2);
+	inm.insertar("Cordoba","balaco","concejal barrera 7878","bueno",45,2,1,3);
+	
+//	inm.insertar("a","b","c","d",8,"f","g",2);
 //inm.eliminar(1);
 	//inm.modificar(3,"last_name","jorge");
 	

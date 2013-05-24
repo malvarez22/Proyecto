@@ -1,6 +1,6 @@
 package test.java.com.unrc.app;
 
-import main.com.unrc.app.models.OwnerBuilding;
+import com.unrc.app.models.OwnerBuilding;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -37,11 +37,11 @@ public class OwnerBuildingSpec{
         the(ownerBulding.errors().get("street")).shouldBeEqual("value is missing");
         the(ownerBulding.errors().get("email")).shouldBeEqual("value is missing");
         the(ownerBulding.errors().get("phone_number")).shouldBeEqual("value is missing");
-        the(ownerBulding.errors().get("idRealState")).shouldBeEqual("value is missing");    
+        the(ownerBulding.errors().get("id_realStates")).shouldBeEqual("value is missing");    
         
         
         //set missing values
-        ownerBulding.set("first_name", "Matias", "last_name", "Alvarez");
+        ownerBulding.set("first_name","matias", "last_name","alvarez","city","buenos aires","neighborhood","balacco","street","pasnkd","email","mati@gmail.com","phone_number",154220674,"id_realStates",1);
 
         //all is good:
         the(ownerBulding).shouldBe("valid");

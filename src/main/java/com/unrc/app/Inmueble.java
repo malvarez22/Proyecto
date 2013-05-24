@@ -8,8 +8,7 @@ import org.slf4j.spi.*;
 public class Inmueble {
 //metodos insertar,modificar,eliminar inmueble    
 
-	enum Type {campo,quinta,casa,departamento,oficina,cochera}
-	public void insertar(String city,String neighborhood,String street,String descriptive_text,int price,String isType,String situation,int id_ownersBuilding){
+	public void insertar(String city,String neighborhood,String street,String descriptive_text,int price,int id_isType,int id_situation,int id_ownersBuilding){
 		Building b=new Building();
 		OwnerBuilding ob= new OwnerBuilding();
 		
@@ -17,10 +16,9 @@ public class Inmueble {
 		b.set("neighborhood",neighborhood);
 		b.set("street",street);
 		b.set("descriptive_text",descriptive_text);
-		b.set("price",price);
-			
-		b.set("isType",isType);
-		b.set("situation",situation);
+		b.set("price",price);			
+		b.set("id_isType",id_isType);
+		b.set("id_situation",id_situation);
 		ob=ob.findById(id_ownersBuilding);
 		b.set("id_ownersBuilding",ob.getId());
 		b.saveIt();			

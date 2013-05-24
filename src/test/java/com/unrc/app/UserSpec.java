@@ -1,6 +1,6 @@
-package test.java.com.unrc.app;
+package com.unrc.app;
 
-import main.com.unrc.app.models.User;
+import com.unrc.app.models.User;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;

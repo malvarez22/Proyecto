@@ -11,10 +11,7 @@ public class Owner extends Model {
       validateEmailOf("email");
   }
   static{
-	  validateNumericalityOf("phone_number")
-	  .allowNull(true).greaterThan(0)
-      .lessThan(25).onlyInteger()
-	  .message("incorrect 'Phone_number'");
+	  validateNumericalityOf("phone_number");
 	    }
 }
 

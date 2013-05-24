@@ -8,7 +8,7 @@ import org.slf4j.spi.*;
 public class Inmobiliaria {
 
 //metodos insertar,modificar,eliminar inmobiliaria    
-	public static void insertar(String first_name,String city,String neighborhood,String street,String phone_number,String email,String webSite,int id_owner){
+	public static void insertar(String first_name,String city,String neighborhood,String street,int phone_number,String email,String webSite,int id_owner){
 		RealState inmo=new RealState();
 		Owner d=new Owner();
 		inmo.set("first_name",first_name);
