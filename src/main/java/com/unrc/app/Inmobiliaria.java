@@ -6,11 +6,10 @@ import org.javalite.activejdbc.Base;
 import org.slf4j.spi.*;
 
 public class Inmobiliaria {
-
 //metodos insertar,modificar,eliminar inmobiliaria    
-	public static void insertar(String first_name,String city,String neighborhood,String street,int phone_number,String email,String webSite,int id_owner){
+	public static void insertar(String first_name,String city,String neighborhood,String street,int phone_number,String email,String webSite,int id_owner){	
 		RealState inmo=new RealState();
-		Owner d=new Owner();
+		Owner d=new Owner();	
 		inmo.set("first_name",first_name);
 		inmo.set("city",city); 
 		inmo.set("neighborhood",neighborhood);
@@ -31,9 +30,7 @@ public class Inmobiliaria {
 			inmo.saveIt();
 		}
 
-	}
-	
-	
+	}	
 
 	public static void eliminar(int id){
 		RealState inmo=new RealState();
@@ -41,11 +38,7 @@ public class Inmobiliaria {
 		if (inmo!=null){
 			inmo.deleteCascade();
 		}
-
-	}
-
-
-	
+	}	
 }	
 	
 	

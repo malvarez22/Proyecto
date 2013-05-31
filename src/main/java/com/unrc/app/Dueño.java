@@ -6,8 +6,8 @@ import org.javalite.activejdbc.Base;
 import org.slf4j.spi.*;
 
 public class Dueño {
-
 //metodos insertar,modificar,eliminar dueño inmobiliaria    
+	
 	public static void insertar(String first_name,String last_name,String city,int phone_number,String neighborhood,String street,String email){
 		Owner inmo=new Owner();
 		inmo.set("first_name",first_name);

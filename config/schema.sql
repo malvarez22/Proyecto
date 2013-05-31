@@ -107,4 +107,3 @@ CREATE TABLE ads(
   FOREIGN KEY (id_ownersBuilding) REFERENCES owner_buildings(id) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=innoDB;
 
-

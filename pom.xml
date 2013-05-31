@@ -7,6 +7,14 @@
   <version>1.0-SNAPSHOT</version>
   <name>inmoweb-app</name>
   <url>http://maven.apache.org</url>
+  
+  <repositories>
+    <repository>
+      <id>Spark repository</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -31,6 +39,12 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
         <version>1.6.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-core</artifactId>
+      <version>0.9.9.7-SNAPSHOT</version>
     </dependency>
 
   </dependencies>
@@ -69,6 +83,41 @@
         </executions>
      </plugin>
    </plugins>
- </build>
+    <pluginManagement>
+     <plugins>
+     <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+     <plugin>
+     <groupId>org.eclipse.m2e</groupId>
+     <artifactId>lifecycle-mapping</artifactId>
+     <version>1.0.0</version>
+     <configuration>
+     <lifecycleMappingMetadata>
+     <pluginExecutions>
+     <pluginExecution>
+     <pluginExecutionFilter>
+     <groupId>org.javalite</groupId>
+     <artifactId>
+     activejdbc-instrumentation
+     </artifactId>
+     <versionRange>
+     [1.4.1,)
+     </versionRange>
+     <goals>
+     <goal>instrument</goal>
+     </goals>
+     </pluginExecutionFilter>
+     <action>
+     <ignore></ignore>
+     </action>
+     </pluginExecution>
+     </pluginExecutions>
+     </lifecycleMappingMetadata>
+     </configuration>
+     </plugin>
+     </plugins>
+    </pluginManagement>
+  </build>
 
 </project>
+
+
