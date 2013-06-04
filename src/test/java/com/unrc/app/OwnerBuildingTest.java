@@ -1,0 +1,116 @@
+package com.unrc.app;
+
+import com.unrc.app.models.Owner;
+import com.unrc.app.models.OwnerBuilding;
+import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.LazyList;
+import org.junit.After;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+
+public class OwnerBuildingTest {
+
+    @Before
+    public void before() {
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "");
+        Base.openTransaction();
+    }
+
+    @After
+    public void after() {
+        Base.rollbackTransaction();
+        Base.close();
+    }
+
+    @Test
+    public void testInsertarOB() {
+        System.out.println("insertar");
+        String first_name = "PATO";
+        String last_name = "hut";
+        String city = "rio cuarto";
+        int phone_number = 1251611321;
+        String neighborhood = "barrio universidad";
+        String street = "colon 612";
+        String email = "casa@gmail.com";
+        int id = 1;//VER SI BUSCARL EL REAL STATE
+        OwnerBuilding.insertar(first_name, last_name, city, phone_number, neighborhood, street, email, id);
+
+        //busca TODOS los OWNER que coincidan
+        LazyList<OwnerBuilding> encontrados = OwnerBuilding.where(
+                "first_name = '" + first_name + "' and "
+                + "last_name = '" + last_name + "' and "
+                + "city = '" + city + "' and "
+                + "phone_number = '" + phone_number + "' and "
+                + "neighborhood = '" + neighborhood + "' and "
+                + "street = '" + street + "' and "
+                + "email = '" + email + "'");
+
+        assertTrue(encontrados.size() == 1);
+    }
+    
+      @Test
+    public void testEliminar() throws Exception {
+        System.out.println("eliminar 1");
+
+        String first_name = "pato";
+        String last_name = "lagable";
+        String city = "rio cuarto";
+        int phone_number = 1251611321;
+        String neighborhood = "barrio centro";
+        String street = "colon 612";
+        String email = "lapato@gmail.com";
+        
+          
+        OwnerBuilding.insertar("eli", "dom", "rio cuarto", 629668422, "centro 1", "colon 612", "elido@gmail.com",1);
+        OwnerBuilding.insertar("mati", "alvarez", "buenos aires", 15115555, "la boca", "casilda 1551", "malvarez@hotamil.com",2);
+        OwnerBuilding.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,3);
+
+        Owner encontrado = Owner.findFirst(
+                "first_name = '" + first_name + "' and "
+                + "last_name = '" + last_name + "' and "
+                + "city = '" + city + "' and "
+                + "phone_number = '" + phone_number + "' and "
+                + "neighborhood = '" + neighborhood + "' and "
+                + "street = '" + street + "' and "
+                + "email = '" + email + "'");
+
+        if (encontrado == null) {
+            fail("Error: No se encontro pato para borrar");
+        } else {
+            Integer id = encontrado.getInteger("id");
+            encontrado.deleteCascade();
+            LazyList<OwnerBuilding> todosLosOwner = OwnerBuilding.findAll();
+
+            for (OwnerBuilding o : todosLosOwner) {
+                assertFalse(
+                        id == o.getInteger("id")
+                        && first_name.equals(o.getString("first_name"))
+                        && last_name.equals(o.getString("last_name"))
+                        && city.equals(o.getString("city"))
+                        && phone_number == o.getInteger("phone_number")
+                        && neighborhood.equals(o.getString("neighborhood"))
+                        && street.equals(o.getString("street"))
+                        && email.equals(o.getString("email")));
+            }
+        }
+    }
+       
+}
+//
+//    @Test
+//    public void testModificar() {
+//        System.out.println("modificar");
+//        int id = 0;
+//        String element = "";
+//        String change = "";
+//        OwnerBuilding.modificar(id, element, change);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+  
+
+
