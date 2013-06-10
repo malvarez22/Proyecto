@@ -1,24 +1,12 @@
 package com.unrc.app;
 
 import com.unrc.app.models.User;
-import com.unrc.app.Dueño;
 import org.javalite.activejdbc.Base;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import static spark.Spark.*;
-import spark.*;
 
 public class Inmo {
-    public static void main( String[] args ){
+    public static void main( String[] args )
+    {
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
-       //http://0.0.0.0:4567/hello
-        get(new Route("/hello") {
-         @Override
-         public Object handle(Request request, Response response) {
-            return "Hello World!, this is a test";
-         }
-     });
-
 
         User e = new User();
         e.set("email", "user@email.com");
@@ -27,42 +15,22 @@ public class Inmo {
         e.saveIt();
 
 /*en este bloque de codigo se prueban clases dueño e inmobiliaria*/
-        Dueño d = new Dueño();
-        d.insertar("eliana","dominguez","Cordoba",154220674,"balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com");
-        d.eliminar(1);
-        d.modificar(78,"last_name","jorge");
-	
-        Inmobiliaria i=new Inmobiliaria();
+	Dueño.insertar("","eliana","dominguez","Cordoba","154220674","balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com");
 
-//si se quiere insertar con un dueño que no existe tira exception
-	//i.insertar("a","b","c","d","e","f","g",1);
-        i.insertar("gutierrez Inmobiliaria","Cordoba","balaco","concejal barrera 7878",154220674,"e@hotmail.com","www.z.com",2);
-        i.eliminar(4);
-        i.modificar(2,"first_name","jorge");
+	Dueño.eliminar("1");
+	Dueño.modificar("","78","last_name","jorge","f","g","d","a","");
+	
+	
+	Inmobiliaria.eliminar("4");
+	Inmobiliaria.modificar("2","first_name","jorge","","","","","","");
 	
 
 //prueba dueño inmueble e inmueble 
 
-
-        DueñoInmueble di = new DueñoInmueble();
-        di.insertar("eliana","dominguez","Cordoba",154220674,"balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com",1);
-//	di.eliminar(1);
-//	di.modificar(3,"last_name","jorge");
+	DueñoInmueble.insertar("eliana","dominguez","Cordoba","154220674","balaco","concejal barrera 7878","eli_dominguez_88@hotmail.com","1","");
 	
-        Inmueble inm = new Inmueble();
 //si se desea agregar un tipo diferente del enum creado lanza error
-        inm.insertar("Cordoba","balaco","concejal barrera 7878","bueno",45,2,1,3);
-	
-//	inm.insertar("a","b","c","d",8,"f","g",2);
-//inm.eliminar(1);
-	//inm.modificar(3,"last_name","jorge");
-        get(new Route("/hello") {
-            @Override
-            public Object handle(Request request, Response response) {
-               return "Hello World!";
-            }
-         });
-
-        System.out.println( "Hello World!" );
+	Inmueble.insertar("Cordoba","balaco","concejal barrera 7878","bueno","45","2","1","3","");
+	System.out.println( "Hello Inmo!" );
     }
 }

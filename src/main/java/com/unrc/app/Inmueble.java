@@ -2,15 +2,15 @@ package com.unrc.app;
 
 import com.unrc.app.models.Building;
 import com.unrc.app.models.OwnerBuilding;
-import org.javalite.activejdbc.Base;
-import org.slf4j.spi.*;
+import com.unrc.app.models.RealState;
 
 public class Inmueble {
 //metodos insertar,modificar,eliminar inmueble    
 
-	public void insertar(String city,String neighborhood,String street,String descriptive_text,int price,int id_isType,int id_situation,int id_ownersBuilding){
+	public static void insertar(String city,String neighborhood,String street,String descriptive_text,String price,String id_isType,String id_situation,String id_ownersBuilding, String id_realstate){
 		Building b=new Building();
-		OwnerBuilding ob= new OwnerBuilding();		
+		OwnerBuilding ob= new OwnerBuilding();
+                RealState re= new RealState();
 		b.set("city",city); 
 		b.set("neighborhood",neighborhood);
 		b.set("street",street);
@@ -18,25 +18,46 @@ public class Inmueble {
 		b.set("price",price);			
 		b.set("id_isType",id_isType);
 		b.set("id_situation",id_situation);
-		ob=ob.findById(id_ownersBuilding);
+		ob=OwnerBuilding.findById(id_ownersBuilding);
 		b.set("id_ownersBuilding",ob.getId());
-		b.saveIt();	
-	}	
+                re=RealState.findById(id_realstate);
+                b.set("id_realstate",re.getId());
+                b.saveIt();			
+	
+	}
+	
+	
 
-	public static void modificar(int id,String element, String  change){
-		Building ob=new Building();
-		ob=ob.findById(id);
+	public static void modificar(String id,String city,String neighborhood,String street,String descriptive_text,String price,String id_isType,String id_situation,String id_ownersBuilding, String id_realstate){
+		Building b=new Building();		
+		OwnerBuilding ob= new OwnerBuilding();
+                RealState re=new RealState();
+		ob=OwnerBuilding.findById(id);
 		if (ob!=null){
-			ob.set(element,change);
-			ob.saveIt();
+			b.set("city",city); 
+			b.set("neighborhood",neighborhood);
+			b.set("street",street);
+			b.set("descriptive_text",descriptive_text);
+			b.set("price",price);			
+			b.set("id_isType",id_isType);
+			b.set("id_situation",id_situation);
+			ob=OwnerBuilding.findById(id_ownersBuilding);
+			b.set("id_ownersBuilding",ob.getId());
+                        re=RealState.findById(id_realstate);
+                        b.set("id_realstate",re.getId());
+			b.saveIt();			
 		}
-	}	
 
-	public static void eliminar(int id){
+	}
+	
+
+	public static void eliminar(String id){
 		Building ob=new Building();
-		ob=ob.findById(id);
+		ob=Building.findById(id);
 		if (ob!=null){
 			ob.deleteCascade();
 		}
-	}	
+
+	}
+	
 }	

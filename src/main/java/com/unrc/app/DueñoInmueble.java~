@@ -1,0 +1,44 @@
+package com.unrc.app;
+import com.unrc.app.models.*;
+import org.javalite.activejdbc.Model;
+
+public class DueñoInmueble {
+//metodos insertar,modificar,eliminar dueño inmobiliaria    
+	public static void insertar(String first_name,String last_name,String city,String neighborhood,String street,String email,String phone_number,String id_building, String id_realstate){	
+		OwnerBuilding o=new OwnerBuilding();
+		Building b=new Building();
+		RealState d= new RealState();	
+		o.set("first_name",first_name);
+		o.set("last_name",last_name);
+		o.set("city",city);
+		o.set("phone_number",phone_number);
+		o.set("neighborhood",neighborhood);
+		o.set("street",street);		
+		o.set("email",email);
+		d = RealState.findById(id_realstate);
+		o.set("id_realStates",d.getId());//para ver a que inmobiliaria pertence
+		b=Building.findById(id_building);
+		o.saveIt();		
+	}
+
+	public static void modificar(String id,String element, String  change){
+		OwnerBuilding o=new OwnerBuilding();
+		o=OwnerBuilding.findById(id);
+		if (o!=null){
+			o.set(element,change);
+			o.saveIt();
+		}
+	}
+
+	public static void eliminar(String id){
+		OwnerBuilding o=new OwnerBuilding();
+		o=OwnerBuilding.findById(id);
+		if (o!=null){
+			o.deleteCascade();
+		}
+
+	}
+
+}	
+	
+	

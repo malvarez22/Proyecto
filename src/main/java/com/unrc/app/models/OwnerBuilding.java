@@ -4,7 +4,7 @@ import org.javalite.activejdbc.Model;
 
 public class OwnerBuilding extends Model {
   static{
-      validatePresenceOf("first_name", "last_name","city","neighborhood","street","email","phone_number","id_realStates");
+      validatePresenceOf("id","first_name", "last_name","city","neighborhood","street","email","phone_number","id_building","id_realstate");
   }
   static{
       validateEmailOf("email");
@@ -13,3 +13,4 @@ public class OwnerBuilding extends Model {
 	  validateNumericalityOf("phone_number");
 	    }
 }
+

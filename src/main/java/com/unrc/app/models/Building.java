@@ -4,7 +4,7 @@ import org.javalite.activejdbc.Model;
 
 public class Building extends Model {
   static{
-      validatePresenceOf("city","neighborhood","street","descriptive_text","price","id_situation","id_ownersBuilding","id_isType");
+      validatePresenceOf("city","neighborhood","street","descriptive_text","price","id_situation","id_ownersBuilding","id_isType","id_realstate");
   }
   static{
 	  int min = 1, max =5;

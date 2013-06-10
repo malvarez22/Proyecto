@@ -1,0 +1,29 @@
+-------------------------------------------------------------------------------
+Test set: com.unrc.app.OwnerTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.195 sec <<< FAILURE!
+testEliminar(com.unrc.app.OwnerTest)  Time elapsed: 0.049 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Dueño.insertar(Dueño.java:20)
+	at com.unrc.app.OwnerTest.testEliminar(OwnerTest.java:120)
+
+testModificar(com.unrc.app.OwnerTest)  Time elapsed: 0.025 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Dueño.insertar(Dueño.java:20)
+	at com.unrc.app.OwnerTest.testModificar(OwnerTest.java:155)
+
+testInsertar1(com.unrc.app.OwnerTest)  Time elapsed: 0.026 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Dueño.insertar(Dueño.java:20)
+	at com.unrc.app.OwnerTest.testInsertar1(OwnerTest.java:40)
+
+testInsertar2(com.unrc.app.OwnerTest)  Time elapsed: 0.028 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Dueño.insertar(Dueño.java:20)
+	at com.unrc.app.OwnerTest.testInsertar2(OwnerTest.java:65)
+
+testInsertar3(com.unrc.app.OwnerTest)  Time elapsed: 0.047 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Dueño.insertar(Dueño.java:20)
+	at com.unrc.app.OwnerTest.testInsertar3(OwnerTest.java:91)
+

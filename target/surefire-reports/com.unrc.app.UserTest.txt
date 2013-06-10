@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.unrc.app.UserTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.087 sec <<< FAILURE!
+testInsertarU(com.unrc.app.UserTest)  Time elapsed: 0.03 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Attribute: 'contraseña' is not defined in model: 'class com.unrc.app.models.User' and also, did not find an association by the same name, available attributes: [id, first_name, contraseã±a, email, last_name]
+Available associations: 
+
+	at org.javalite.activejdbc.MetaModel.checkAttributeOrAssociation(MetaModel.java:299)
+	at org.javalite.activejdbc.Model.set(Model.java:196)
+	at com.unrc.app.models.User.set(User.java)
+	at com.unrc.app.Usuario.insertar(Usuario.java:21)
+	at com.unrc.app.UserTest.testInsertarU(UserTest.java:44)
+
+testEliminarU(com.unrc.app.UserTest)  Time elapsed: 0.037 sec  <<< ERROR!
+java.lang.IllegalArgumentException: Attribute: 'contraseña' is not defined in model: 'class com.unrc.app.models.User' and also, did not find an association by the same name, available attributes: [id, first_name, contraseã±a, email, last_name]
+Available associations: 
+
+	at org.javalite.activejdbc.MetaModel.checkAttributeOrAssociation(MetaModel.java:299)
+	at org.javalite.activejdbc.Model.set(Model.java:196)
+	at com.unrc.app.models.User.set(User.java)
+	at com.unrc.app.Usuario.insertar(Usuario.java:21)
+	at com.unrc.app.UserTest.testEliminarU(UserTest.java:64)
+

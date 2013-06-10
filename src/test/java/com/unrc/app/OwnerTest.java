@@ -14,7 +14,7 @@ public class OwnerTest {
 
     @Before
     public void beforeTest() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
         Base.openTransaction();
     }
 
@@ -30,15 +30,14 @@ public class OwnerTest {
         String first_name = "pato";
         String last_name = "lagable";
         String city = "rio cuarto";
-        int phone_number = 1251611321;
+        String phone_number = "1251611321";
         String neighborhood = "barrio universidad";
         String street = "colon 612";
         String email = "casa@gmail.com";
-
-        //insertar con activejdb
-        //Owner.createIt(first_name, last_name, city, phone_number, neighborhood, street, email);
-
-        Owner.insertar(first_name, last_name, city, phone_number, neighborhood, street, email);
+        String id_realstate="1";
+	Dueño dueño=new Dueño();
+	Owner owner=new Owner();
+	Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
         //busca TODOS los OWNER que coincidan
         LazyList<Owner> encontrados = Owner.where(
                 "first_name = '" + first_name + "' and "
@@ -55,18 +54,15 @@ public class OwnerTest {
     @Test
     public void testInsertar2() {
         System.out.println("insertar 2");
-        String first_name = "pat";
-        String last_name = "bonnettttt";
-        String city = "ooooooooo58 ";
-        int phone_number = 1251 * 611321;
-        String neighborhood = "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk";
+        String first_name = "carlos";
+        String last_name = "lopez";
+        String city = "buenos aires ";
+        String phone_number = "1251";
+        String neighborhood = "centro";
         String street = "colon 612";
         String email = "casagmail@hotmail.com";
-
-        //insertar con ajdb
-        // Owner.createIt(first_name, last_name, city, phone_number, neighborhood, street, email);
-
-        Owner.insertar(first_name, last_name, city, phone_number, neighborhood, street, email);
+        String id_realstate="1";
+        Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
         //busca TODOS los OWNER que coincidan
         LazyList<Owner> encontrados = Owner.where(
                 "first_name = '" + first_name + "' and "
@@ -86,15 +82,13 @@ public class OwnerTest {
         String first_name = "puedo tener un nombre asi: _:lslsls**//8 ";
         String last_name = "bonnet";
         String city = "laboulaie ";
-        int phone_number = 1251611001;
+        String phone_number = "1251611001";
         String neighborhood = " ";
         String street = "colon 612";
-        String email = "casagmail@hh.com"; //checkeado que anda el validate
+        String email = "casagmail@hh.com"; //checkeado que funciona validate
+        String id_realstate="1";
 
-        //insertar con ajdb
-        //Owner.createIt(first_name, last_name, city, phone_number, neighborhood, street, email);
-
-        Owner.insertar(first_name, last_name, city, phone_number, neighborhood, street, email);
+        Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
         //busca TODOS los OWNER que coincidan
         LazyList<Owner> encontrados = Owner.where(
                 "first_name = '" + first_name + "' and "
@@ -116,15 +110,14 @@ public class OwnerTest {
         String first_name = "pato";
         String last_name = "lagable";
         String city = "rio cuarto";
-        int phone_number = 1251611321;
+        String phone_number = "1251611321";
         String neighborhood = "barrio centro";
         String street = "colon 612";
         String email = "lapato@gmail.com";
-
-        Owner.insertar("eli", "dom", "rio cuarto", 6298422, "centro 1", "colon 612", "elido@gmail.com");
-        Owner.insertar("mati", "alvarez", "buenos aires", 151155, "la boca", "casilda 1551", "malvarez@hotamil.com");
-        Owner.insertar(first_name, last_name, city, phone_number, neighborhood, street, email);
-
+        String id_realstate="1";
+	Dueño d=new Dueño();
+	Owner owner=new Owner();
+        Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
         Owner encontrado = Owner.findFirst(
                 "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
@@ -133,38 +126,38 @@ public class OwnerTest {
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
                 + "email = '" + email + "'");
-
+	String id =(String)encontrado.getId();
         if (encontrado == null) {
-            fail("Error: No se encontro pato para borrar");
+            fail("Error: No se encontro elemento para borrar");
         } else {
-            Integer id = encontrado.getInteger("id");
-            encontrado.deleteCascade();
-            LazyList<Owner> todosLosOwner = Owner.findAll();
-
-            for (Owner o : todosLosOwner) {
-                assertFalse(
-                        id == o.getInteger("id")
-                        && first_name.equals(o.getString("first_name"))
-                        && last_name.equals(o.getString("last_name"))
-                        && city.equals(o.getString("city"))
-                        && phone_number == o.getInteger("phone_number")
-                        && neighborhood.equals(o.getString("neighborhood"))
-                        && street.equals(o.getString("street"))
-                        && email.equals(o.getString("email")));
-            }
-        }
+		Dueño.eliminar(id);
+        	}
+	Owner o=Owner.findById(id);
+	assertTrue(o==null);
     }
 
-//    @Test
-//    public void testModificar() {
-//        System.out.println("modificar");
-//        int id = 0;
-//        String element = "";
-//        String change = "";
-//        Owner.modificar(id, element, change);
-//        // falta hacer es un ejemplo
-//
-//
-//
-//    }
+    @Test
+    public void testModificar() {
+	System.out.println("modificar 1");
+	Dueño dueño=new Dueño();
+	Owner owner=new Owner();
+	Owner o=new Owner();
+	
+        String first_name = "pato";
+        String last_name = "lagable";
+        String city = "rio cuarto";
+        String phone_number = "1251611321";
+        String neighborhood = "barrio universidad";
+        String street = "colon 612";
+        String email = "casa@gmail.com";
+        String id_realstate="1";
+	String new_firstName="patricia";
+	Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
+	o=Owner.findFirst("first_name = ?",first_name);
+	String id =(String)o.getId();	
+    	Dueño.modificar(id,new_firstName,last_name,city,phone_number,neighborhood,street,email,id_realstate);
+	o=Owner.findFirst("first_name = ?",new_firstName);
+
+	assertFalse(o==null);	
+   }
 }

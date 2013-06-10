@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.unrc.app.RealStateTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.062 sec <<< FAILURE!
+testEliminar(com.unrc.app.RealStateTest)  Time elapsed: 0.032 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Inmobiliaria.insertar(Inmobiliaria.java:19)
+	at com.unrc.app.RealStateTest.testEliminar(RealStateTest.java:75)
+
+testInsertarR(com.unrc.app.RealStateTest)  Time elapsed: 0.028 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.unrc.app.Inmobiliaria.insertar(Inmobiliaria.java:19)
+	at com.unrc.app.RealStateTest.testInsertarR(RealStateTest.java:47)
+

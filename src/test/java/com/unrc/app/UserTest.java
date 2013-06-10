@@ -22,7 +22,7 @@ public class UserTest {
 
     @Before
     public void beforeTest() {
-        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "");
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
         Base.openTransaction();
     }
 
@@ -38,16 +38,17 @@ public class UserTest {
         String first_name = "pato";
         String last_name = "lagable";
         String email = "casa@gmail.com";
+        String contraseña="matute@hotmail.com";
 
 
-        User.insertar(email, first_name, last_name);
+        Usuario.insertar(email, first_name, last_name,contraseña);
 
         //busca TODOS los Usuarios que coincidan
         LazyList<User> encontrados = User.where(
                 "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
-                + "email = '" + email + "'");
-
+                + "email = '" + email + "'"
+                + "contraseña = '" + contraseña + "'");
         assertTrue(encontrados.size() == 1);
     }
 
@@ -58,18 +59,20 @@ public class UserTest {
         String first_name = "pato";
         String last_name = "lagable";
         String email = "lapato@gmail.com";
+        String contraseña="12345";
 
-        User.insertar("pato@hotmail.com", "pat", "fernanndez");
-        User.insertar("toe@hotmail.com", "teo", "adaaaa");
-        User.insertar(email, first_name, last_name);
+        Usuario.insertar("pato@hotmail.com", "pat", "fernanndez","lato@gmail.com");
+        Usuario.insertar("toe@hotmail.com", "teo", "adaaaa","lapo@gmail.com");
+        Usuario.insertar(email, first_name, last_name,contraseña);
 
         User encontrado = User.findFirst(
                 "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
-                + "email = '" + email + "'");
+                + "email = '" + email + "'"
+                + "contraseña = '" + contraseña + "'");
 
         if (encontrado == null) {
-            fail("Error: No se encontro pato para borrar");
+            fail("Error: No se encontro elemento para borrar");
         } else {
             Integer id = encontrado.getInteger("id");
             encontrado.deleteCascade();
@@ -85,17 +88,4 @@ public class UserTest {
         }
 
     }
-    //    @Test
-//    public void testModificarU() {
-//        System.out.println("modificar");
-//        int id = 0;
-//        String element = "";
-//        String change = "";
-//        Owner.modificar(id, element, change);
-//        // falta hacer es un ejemplo
-//
-//
-//
-//    }
-    
 }

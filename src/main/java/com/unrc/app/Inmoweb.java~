@@ -1,0 +1,106 @@
+package com.unrc.app;
+import java.util.*;
+import com.unrc.app.models.*;
+import com.unrc.app.*;
+import org.javalite.activejdbc.Base;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import static spark.Spark.*;
+import spark.*;
+import java.util.List;
+
+public class Inmoweb {
+
+   public static void main(String[] args) {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");   	
+      User e = new User();
+        e.set("email", "user@email.com");
+        e.set("first_name", "John");
+        e.set("last_name", "Doe");
+        e.saveIt(); 	
+      Spark.get(new Route("/") {
+         @Override
+         public Object handle(Request request, Response response) {
+            response.type("text/html");
+	     // return html
+                return "" +
+                "<DOCTYPE html>" +
+                "<html>" +
+                " <head>" +
+                "<title>Inmo Web</title>"+
+                " </head>" +
+                "<body background = 'http://inmueblesconrentabilidad.net/wp-content/uploads/2012/03/edificios.jpg'>"+
+                "<center> <h1>Imobiliarias Online Web</h1>" +
+                " <a href='users/2'>Users</a><br>"+
+		" <a href='owners/'>listOwners</a><br>"+
+                "</body>" +
+                "</html>";
+         }
+      });
+
+	Spark.get(new Route("/users/:id") {
+     		@Override
+  		public Object handle(Request request, Response response) {
+  			Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
+     			User user = User.findFirst("id = ?", request.params(":id"));
+     			Base.close();
+        	
+    			 if (user != null ){
+  	   			 return "Name: "+user.get("first_name");
+     			}else{
+  	   			response.status(404);
+  	   			return "User not found";
+     			}
+     		}
+	}); //end User
+	
+	// esto sirve para listar todos los owners de la base de datos... 
+	Spark.get(new Route("/owners/") {
+     	@Override
+     		public Object handle(Request request, Response response) {
+			response.type("text/html");
+	     		Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
+			Owner o=new Owner();	     		
+			List <Owner>owners = Owner.findAll();
+			String result ="";
+			for (int i=0;i<owners.size();i++){
+				o = owners.get(i);
+				result = result + "FN: "+o.get("first_name")+"<br>";
+			}
+			Base.close();
+			return result;			
+	    	}
+	}); //end Owners*/
+
+	Spark.get(new Route("/addowner/") {
+     	@Override
+     		public Object handle(Request request, Response response) {
+			response.type("text/html");	     					
+			return "" + 
+			"<form method = 'POST' action='/addowner/'  >"+
+     			"First Name: <input name='first_name'><P>"+
+     			"Last Name: <input name='last_name'><P>"+
+                        "City : <input name='city'><P>"+
+                        "Neighborhood: <input name='neighborhood'><P>"+
+                        "Phone_number: <input name='phone_number'><P>"+
+                        "Street: <input name='street'><P>"+
+                        "Email: "+"<input name='email'VALUE='example@example.com'><P>"+                                
+     			"<input type='submit' value='Add'>"+
+     			"<input type='reset' value='Reset'></form>";			
+	    	}
+	});
+
+	 //end formularioOwners*/
+
+	Spark.post(new Route ("/addowner/"){
+	@Override
+		public Object handle(Request request, Response response) {
+			response.type("text/html");
+			Dueño dueño = new Dueño();	
+			Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
+			dueño.insertar(request.queryParams("first_name"), request.queryParams("last_name"),request.queryParams("city"),request.queryParams("phone_number"), request.queryParams("neighborhood"),request.queryParams("street"),request.queryParams("email"));
+		return "El dueño ha sido agregado exitosamente";	
+		}
+   	});
+  }
+}

@@ -1,0 +1,8 @@
+drop table `inmoapp_development`.`ads`;
+drop table `inmoapp_development`.`buildings`;
+drop table `inmoapp_development`.`is_types`;
+drop table `inmoapp_development`.`owner_buildings`;
+drop table `inmoapp_development`.`real_states`;
+drop table `inmoapp_development`.`situations`;
+drop table `inmoapp_development`.`owners`;
+drop table `inmoapp_development`.`users`;
