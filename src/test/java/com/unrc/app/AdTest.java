@@ -30,7 +30,7 @@ public class AdTest {
 	String descriptive_text="Vendo inmueble urgente";
 	String id_buildings="1";
 	String id_ownersBuildings="1";
-        String id_realstate="2";
+        String id_realstate="1";
 	Anuncio.insertar(descriptive_text,id_buildings,id_ownersBuildings,id_realstate);
 
         //busca TODOS los OWNER que coincidan
@@ -48,7 +48,7 @@ public class AdTest {
 	String descriptive_text="Vendo inmueble urgente";
 	String id_buildings="1";
 	String id_ownersBuildings="1";
-        String id_realstate="2";
+        String id_realstate="1";
 	Ad ad=new Ad();
 	Anuncio a=new Anuncio();
 	Anuncio.insertar(descriptive_text,id_buildings,id_ownersBuildings,id_realstate);
@@ -57,8 +57,9 @@ public class AdTest {
 	 if (encontrado == null) {
             fail("Error: No se encontro Anuncio para borrar");
         } else {		
-                String id =(String)encontrado.getId();	
-		Anuncio.eliminar(id);
+                int id =(Integer)encontrado.getId();	
+		String in= Integer.toString(id);
+		Anuncio.eliminar(in);
 		Ad ads=Ad.findById(id);
 		assertTrue(ads==null);
 	}
@@ -72,16 +73,17 @@ public class AdTest {
 	String descriptive_text="Vendo inmueble urgente";
 	String id_buildings="1";
 	String id_ownersBuildings="1";
-        String id_realstate="2";
+        String id_realstate="1";
 	Ad ad=new Ad();
 	Anuncio a=new Anuncio();
 	Anuncio.insertar(descriptive_text,id_buildings,id_ownersBuildings,id_realstate);
 
         Ad encontrado = Ad.findFirst("descriptive_text=?",descriptive_text);
 
-       	String id =(String)ad.getId();
+       	int id =(Integer)ad.getId();
+	String in= Integer.toString(id);
 	String new_text="Vendo edificio";
-    	Anuncio. modificar(id,new_text,id_buildings,id_ownersBuildings,id_realstate);
+    	Anuncio. modificar(in,new_text,id_buildings,id_ownersBuildings,id_realstate);
 		
 	Ad ads=Ad.findFirst("descriptive_text= ?",new_text);
 

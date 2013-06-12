@@ -32,10 +32,11 @@ public class AdSpec{
         the(ad).shouldNotBe("valid");
         the(ad.errors().get("descriptive_text")).shouldBeEqual("value is missing");
 	the(ad.errors().get("id_Building")).shouldBeEqual("value is missing");
-	the(ad.errors().get("id_ownerBuilding")).shouldBeEqual("value is missing");
+	the(ad.errors().get("id_realstate")).shouldBeEqual("value is missing");
+	the(ad.errors().get("id_ownersBuilding")).shouldBeEqual("value is missing");
        
         //set missing values
-        ad.set("descriptive_text", "texto","id_Building",1,"id_ownerBuilding",1);
+        ad.set("descriptive_text", "texto","id_Building",1,"id_ownersBuilding",1,"id_realstate",1);
 
         //all is good:
         the(ad).shouldBe("valid");

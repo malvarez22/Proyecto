@@ -38,17 +38,17 @@ public class UserTest {
         String first_name = "pato";
         String last_name = "lagable";
         String email = "casa@gmail.com";
-        String contraseña="matute@hotmail.com";
+        String contrasenia="matute@hotmail.com";
 
 
-        Usuario.insertar(email, first_name, last_name,contraseña);
+        Usuario.insertar(email, first_name, last_name,contrasenia);
 
         //busca TODOS los Usuarios que coincidan
         LazyList<User> encontrados = User.where(
-                "first_name = '" + first_name + "' and "
+                 "email = '" + email + "' and "
+                + "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
-                + "email = '" + email + "'"
-                + "contraseña = '" + contraseña + "'");
+                + "password = '" + contrasenia + "' ");
         assertTrue(encontrados.size() == 1);
     }
 
@@ -59,31 +59,32 @@ public class UserTest {
         String first_name = "pato";
         String last_name = "lagable";
         String email = "lapato@gmail.com";
-        String contraseña="12345";
+        String contrasenia="12345";
 
         Usuario.insertar("pato@hotmail.com", "pat", "fernanndez","lato@gmail.com");
         Usuario.insertar("toe@hotmail.com", "teo", "adaaaa","lapo@gmail.com");
-        Usuario.insertar(email, first_name, last_name,contraseña);
+        Usuario.insertar(email, first_name, last_name,contrasenia);
 
         User encontrado = User.findFirst(
-                "first_name = '" + first_name + "' and "
+                "email = '" + email + "'and "
+		+ "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
-                + "email = '" + email + "'"
-                + "contraseña = '" + contraseña + "'");
+                + "password = '" + contrasenia + "' ");
 
         if (encontrado == null) {
             fail("Error: No se encontro elemento para borrar");
         } else {
-            Integer id = encontrado.getInteger("id");
+            Integer id =(Integer) encontrado.getId();
             encontrado.deleteCascade();
             LazyList<User> todosLosUser = User.findAll();
 
             for (User u : todosLosUser) {
                 assertFalse(
-                        id == u.getInteger("id")
+                        id == u.getId()
                         && first_name.equals(u.getString("first_name"))
                         && last_name.equals(u.getString("last_name"))
-                        && email.equals(u.getString("email")));
+                        && email.equals(u.getString("email"))
+                        && contrasenia.equals(u.getString("password")));
             }
         }
 

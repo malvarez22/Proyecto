@@ -35,11 +35,8 @@ public class Inmobiliaria {
 			re.set("id_owners",d.getId());
 			re.saveIt();			
 		}
-
 	}
-	
-	
-
+        
 	public static void eliminar(String id){
 		RealState re=new RealState();
 		re=RealState.findById(id);

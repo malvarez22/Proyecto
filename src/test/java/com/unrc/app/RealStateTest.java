@@ -43,7 +43,7 @@ public class RealStateTest {
         String phone_number = "1188899912";
         String email = "juso@hotmail.com";
         String webSite = "www.oooi.com";
-	String id_owners = "4";
+	String id_owners = "1";
         Inmobiliaria.insertar(first_name, city, neighborhood, street, phone_number, email, webSite, id_owners);
 	RealState real=new RealState();
         //busca TODOS las inmobiliarias que coincidan
@@ -53,8 +53,8 @@ public class RealStateTest {
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
                 + "phone_number = '" + phone_number + "' and "
-                + "email = '" + email + "'and "
-                + "webSite= '"+webSite+"'");             
+                + "email = '" + email + "' and "
+                + "webSite= '" + webSite + "'");             
         assertTrue(encontrados.size() == 1);
     }
 
@@ -68,7 +68,7 @@ public class RealStateTest {
         String phone_number = "1188899912";
         String email = "juso@hotmail.com";
         String webSite = "www.oooi.com";
-	String id_owner = "4";
+	String id_owner = "1";
 	Inmobiliaria inmo=new Inmobiliaria();
 	RealState real=new RealState();
 
@@ -80,12 +80,13 @@ public class RealStateTest {
                 + "street = '" + street + "' and "
                 + "phone_number = '" + phone_number + "' and "
                 + "email = '" + email + "'and "
-                + "webSite= '"+webSite+"'");	
+                + "webSite= '" + webSite + "' ");	
         if (encontrado == null) {
             fail("Error: No se encontro elemento para borrar");
         } else {
-		String id =(String)encontrado.getId();	
-		Inmobiliaria.eliminar("id");
+		int id =(Integer)encontrado.getId();
+		String in= Integer.toString(id);
+		Inmobiliaria.eliminar(in);
 		RealState r=RealState.findById(id);
 	assertTrue(r==null);
     

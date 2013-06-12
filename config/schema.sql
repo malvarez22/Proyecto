@@ -1,12 +1,14 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
   id  int(11) NOT NULL  auto_increment PRIMARY KEY,
-  email VARCHAR(60),
+  email VARCHAR(60) UNIQUE,
   first_name VARCHAR(56),
   last_name VARCHAR(56),
-  contraseña VARCHAR(30)
+  password VARCHAR(30)
 )ENGINE=innoDB;
 
+INSERT INTO `users` (`email`,`first_name`,`last_name`,`password`) VALUES
+("matias@hotmail.com","matias","alvarez","matias");
 
 DROP TABLE IF EXISTS owners;
 CREATE TABLE owners(  
@@ -26,7 +28,7 @@ CREATE TABLE real_states(
   id  int(11) NOT NULL  auto_increment PRIMARY KEY,
   first_name VARCHAR(60),
   city VARCHAR(60),
-  neighborhood VARCHAR(60),
+  neighborhood VARCHAR(60),real_states
   street VARCHAR(60),
   phone_number INT(25),
   email VARCHAR(20),

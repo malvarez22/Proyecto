@@ -9,6 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { InmoTest.class, UserSpec.class } )
+@Suite.SuiteClasses( { AdTest.class, UserSpec.class } )
 public class TestSuite {
 }

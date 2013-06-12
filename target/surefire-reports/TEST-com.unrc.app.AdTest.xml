@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.unrc.app.AdTest" time="1.027" tests="2" errors="2" skipped="0" failures="0">
+<testsuite name="com.unrc.app.AdTest" time="0.636" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/i386"/>
@@ -39,7 +39,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;test&quot;"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;clean&quot; &quot;install&quot;"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="es"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -56,20 +56,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testInsertarAd" classname="com.unrc.app.AdTest" time="0.984">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Anuncio.insertar(Anuncio.java:18)
-	at com.unrc.app.AdTest.testInsertarAd(AdTest.java:34)
-</error>
-    <system-out>insertar
-</system-out>
-  </testcase>
-  <testcase name="testEliminar" classname="com.unrc.app.AdTest" time="0.043">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Anuncio.insertar(Anuncio.java:18)
-	at com.unrc.app.AdTest.testEliminar(AdTest.java:54)
-</error>
-    <system-out>eliminar 
-</system-out>
-  </testcase>
+  <testcase name="testInsertarAd" classname="com.unrc.app.AdTest" time="0.536"/>
+  <testcase name="testEliminar" classname="com.unrc.app.AdTest" time="0.1"/>
 </testsuite>

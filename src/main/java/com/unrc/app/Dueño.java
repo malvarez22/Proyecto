@@ -17,7 +17,7 @@ public class Dueño {
 		o.set("street",street);
 		o.set("email",email);
                 re=RealState.findById(id_realstate);
-                o.set("id_realstate",re.getId());
+                o.set("id_realstates",re.getId());
 		o.saveIt();			
 	}
 
@@ -36,7 +36,7 @@ public class Dueño {
 		o.set("street",street);
 		o.set("email",email);
                 re=RealState.findById(id_realstate);
-                o.set("id_realstate",re.getId());
+                o.set("id_realstates",re.getId());
 		o.saveIt();			
 	
 		}

@@ -37,11 +37,12 @@ public class OwnerBuildingSpec{
         the(ownerBulding.errors().get("street")).shouldBeEqual("value is missing");
         the(ownerBulding.errors().get("email")).shouldBeEqual("value is missing");
         the(ownerBulding.errors().get("phone_number")).shouldBeEqual("value is missing");
-        the(ownerBulding.errors().get("id_realStates")).shouldBeEqual("value is missing");    
+        the(ownerBulding.errors().get("id_building")).shouldBeEqual("value is missing");    
+        the(ownerBulding.errors().get("id_realstate")).shouldBeEqual("value is missing");    
         
         
         //set missing values
-        ownerBulding.set("first_name","matias", "last_name","alvarez","city","buenos aires","neighborhood","balacco","street","pasnkd","email","mati@gmail.com","phone_number",154220674,"id_realStates",1);
+        ownerBulding.set("first_name","matias", "last_name","alvarez","city","buenos aires","neighborhood","balacco","street","pasnkd","email","mati@gmail.com","phone_number",154220674,"id_building",1,"id_realStates",1);
 
         //all is good:
         the(ownerBulding).shouldBe("valid");

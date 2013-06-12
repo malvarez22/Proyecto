@@ -45,10 +45,10 @@ public class BuildingTest {
                 + "street='" + street + "' and "
                 + "descriptive_text= '" + descriptive_text + "' and "
                 + "price = '" + price + "' and "
-                + "id_isType= '" + id_isType+ "' and "
-                + "id_situation= '" + id_situation+ "'and "
-		+ "id_ownersBuilding= '" +id_ownersBuilding+"' "
-                + "id_realstate= '" +id_realstate+"' ");
+                + "id_isType= '" + id_isType + "' and "
+                + "id_situation= '" + id_situation + "' and "
+		+ "id_ownersBuilding= '" + id_ownersBuilding + "' and "
+                + "id_realstate= '" + id_realstate + "' ");
         assertTrue(encontrados.size() == 1);
     }
     
@@ -73,15 +73,16 @@ public class BuildingTest {
                 + "street='" + street + "' and "
                 + "descriptive_text= '" + descriptive_text + "' and "
                 + "price = '" + price + "' and "
-                + "id_isType= '" + id_isType+ "' and "
-                + "id_situation= '" + id_situation+ "'and "
-		+ "id_ownersBuilding= '" +id_ownersBuilding+"' "
-                + "id_realstate= '" +id_ownersBuilding+"' ");
+                + "id_isType= '" + id_isType + "' and "
+                + "id_situation= '" + id_situation + "' and "
+		+ "id_ownersBuilding= '" + id_ownersBuilding + "' and "
+                + "id_realstate= '" + id_ownersBuilding + "' ");
 	 if (encontrado == null) {
             fail("Error: No se encontro elemento para borrar");
         } else {		
-		int id =(Integer)encontrado.getId();	
-		Inmueble.eliminar("id");
+		int id =(Integer)encontrado.getId();
+		String in= Integer.toString(id);
+		Inmueble.eliminar(in);
 		Building o=Building.findById(id);
 		assertTrue(o==null);
 	}
@@ -113,9 +114,9 @@ public class BuildingTest {
                 + "street='" + street + "' and "
                 + "descriptive_text= '" + descriptive_text + "' and "
                 + "price = '" + price + "' and "
-                + "id_isType= '" + id_isType+ "' and "
-                + "id_situation= '" + id_situation+ "'and "
-		+ "id_ownersBuilding= '" +id_ownersBuilding+"' ");
+                + "id_isType= '" + id_isType + "' and "
+                + "id_situation= '" + id_situation + "'and "
+		+ "id_ownersBuilding= '" + id_ownersBuilding +"' ");
 	String id =(String)o.getId();	
     	Inmueble.modificar(id,new_city,neighborhood,street,descriptive_text,price, id_isType,id_situation,id_ownersBuilding,id_realstate);		
 	o=Building.findFirst("city= ?",new_city);

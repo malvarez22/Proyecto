@@ -7,7 +7,11 @@ public class RealState extends Model {
       validatePresenceOf("first_name", "city","neighborhood","street","phone_number","email","WebSite","id_owners");
   }
   
-  static{
+  /*static{
 	  validateNumericalityOf("phone_number");
-	    }	 	    
+	    }*/	 
+  static{
+      validateEmailOf("email");
+  }
+ 
 }

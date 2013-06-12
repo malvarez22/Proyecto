@@ -38,17 +38,21 @@ public class OwnerBuildingTest {
         String id_realstate="1";
 	OwnerBuilding ob=new OwnerBuilding();
 
-	DueñoInmueble.insertar(first_name,last_name,city,phone_number,neighborhood,street,email,id_building,id_realstate);
+	DueñoInmueble.insertar(first_name,last_name,city,neighborhood,street,email,phone_number,id_building,id_realstate);
+
+
 
         //busca TODOS los OWNER que coincidan
         LazyList<OwnerBuilding> encontrados = OwnerBuilding.where(
                 "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
                 + "city = '" + city + "' and "
-                + "phone_number = '" + phone_number + "' and "
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
-                + "email = '" + email + "'");
+                + "email = '" + email + "' and "
+		+ "phone_number = '" + phone_number + "' and "
+                + "id_building = '" + id_building + "' and "
+                + "id_realstate = '" + id_realstate + "' ");
 
         assertTrue(encontrados.size() == 1);
     }
@@ -64,25 +68,28 @@ public class OwnerBuildingTest {
         String street = "colon 612";
         String email = "casa@gmail.com";
         String id_building = "1";
-        String id_realstate="2";
+        String id_realstate="1";
 	OwnerBuilding ob=new OwnerBuilding();
 	DueñoInmueble di=new DueñoInmueble();
-	DueñoInmueble.insertar(first_name,last_name,city,phone_number,neighborhood,street,email,id_building,id_realstate);
+	DueñoInmueble.insertar(first_name,last_name,city,neighborhood,street,email,phone_number,id_building,id_realstate);
         OwnerBuilding encontrado = OwnerBuilding.findFirst(
                 "first_name = '" + first_name + "' and "
                 + "last_name = '" + last_name + "' and "
                 + "city = '" + city + "' and "
-                + "phone_number = '" + phone_number + "' and "
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
-                + "email = '" + email + "'");
+                + "email = '" + email + "' and "
+                + "phone_number = '" + phone_number + "' and "
+                + "id_building = '" + id_building + "' and "
+                + "id_realstate = '" + id_realstate + "' ");
 
         if (encontrado == null) {
             fail("Error: No se encontro pato para borrar");
         } else {
 		
-		String id =(String)encontrado.getId();	
-		DueñoInmueble.eliminar("id");
+		int  id =(Integer)encontrado.getId();	
+		String in =Integer.toString(id);
+		DueñoInmueble.eliminar(in);
 		OwnerBuilding o=OwnerBuilding.findById(id);
 		assertTrue(o==null);
 	}
@@ -101,13 +108,13 @@ public class OwnerBuildingTest {
         String street = "colon 612";
         String email = "casa@gmail.com";
         String id_building = "1";
-        String id_realstate="2";
+        String id_realstate="1";
 	OwnerBuilding ob=new OwnerBuilding();
 	DueñoInmueble di=new DueñoInmueble();
 	DueñoInmueble.insertar(first_name,last_name,city,phone_number,neighborhood,street,email,id_building,id_realstate);
 	String new_firstName="Juan";
 	OwnerBuilding o=new OwnerBuilding();
-	o=OwnerBuilding.findFirst("first_na me = ?",first_name);
+	o=OwnerBuilding.findFirst("first_name = ?",first_name);
 	String id =(String)o.getId();	
     	DueñoInmueble.modificar(id,first_name,last_name,city,phone_number,neighborhood,street,email,id_building,id_realstate);
 		

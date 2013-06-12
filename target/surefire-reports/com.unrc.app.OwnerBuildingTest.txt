@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.unrc.app.OwnerBuildingTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.112 sec <<< FAILURE!
-testEliminar(com.unrc.app.OwnerBuildingTest)  Time elapsed: 0.077 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.DueñoInmueble.insertar(DueñoInmueble.java:22)
-	at com.unrc.app.OwnerBuildingTest.testEliminar(OwnerBuildingTest.java:70)
-
-testInsertarOB(com.unrc.app.OwnerBuildingTest)  Time elapsed: 0.03 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.DueñoInmueble.insertar(DueñoInmueble.java:22)
-	at com.unrc.app.OwnerBuildingTest.testInsertarOB(OwnerBuildingTest.java:41)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.227 sec

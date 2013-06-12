@@ -10,7 +10,7 @@ public class Owner extends Model {
   static{
       validateEmailOf("email");
   }
-  static{
+  /*static{
 	  validateNumericalityOf("phone_number");
-	    }
+	    }*/
 }

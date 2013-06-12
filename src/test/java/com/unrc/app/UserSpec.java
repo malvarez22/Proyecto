@@ -30,11 +30,12 @@ public class UserSpec{
 
         //check errors
         the(user).shouldNotBe("valid");
+        the(user.errors().get("email")).shouldBeEqual("value is missing");
         the(user.errors().get("first_name")).shouldBeEqual("value is missing");
         the(user.errors().get("last_name")).shouldBeEqual("value is missing");
-
+        the(user.errors().get("password")).shouldBeEqual("value is missing");
         //set missing values
-        user.set("first_name", "John", "last_name", "Doe");
+        user.set("email","eli_dominguez_88@hotmail.com","first_name", "John", "last_name", "Doe","password","loco");
 
         //all is good:
         the(user).shouldBe("valid");

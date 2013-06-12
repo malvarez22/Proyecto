@@ -37,7 +37,9 @@ public class OwnerTest {
         String id_realstate="1";
 	Dueño dueño=new Dueño();
 	Owner owner=new Owner();
-	Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
+	Owner o=new Owner();
+
+	dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
         //busca TODOS los OWNER que coincidan
         LazyList<Owner> encontrados = Owner.where(
                 "first_name = '" + first_name + "' and "
@@ -97,7 +99,7 @@ public class OwnerTest {
                 + "phone_number = '" + phone_number + "' and "
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
-                + "email = '" + email + "'");
+                + "email = '" + email + "' ");
 
         assertTrue(encontrados.size() == 1);
     }
@@ -126,11 +128,12 @@ public class OwnerTest {
                 + "neighborhood = '" + neighborhood + "' and "
                 + "street = '" + street + "' and "
                 + "email = '" + email + "'");
-	String id =(String)encontrado.getId();
+	int id =(Integer)encontrado.getId();
+	String in=Integer.toString(id);
         if (encontrado == null) {
             fail("Error: No se encontro elemento para borrar");
         } else {
-		Dueño.eliminar(id);
+		Dueño.eliminar(in);
         	}
 	Owner o=Owner.findById(id);
 	assertTrue(o==null);
@@ -149,13 +152,14 @@ public class OwnerTest {
         String phone_number = "1251611321";
         String neighborhood = "barrio universidad";
         String street = "colon 612";
-        String email = "casa@gmail.com";
+        String email = "eli_dominguez_88@hotmail.com";
         String id_realstate="1";
 	String new_firstName="patricia";
 	Dueño.insertar(first_name, last_name, city, phone_number, neighborhood, street, email,id_realstate);
 	o=Owner.findFirst("first_name = ?",first_name);
-	String id =(String)o.getId();	
-    	Dueño.modificar(id,new_firstName,last_name,city,phone_number,neighborhood,street,email,id_realstate);
+	int id =(Integer)o.getId();
+	String in= Integer.toString(id);	
+    	Dueño.modificar(in,new_firstName,last_name,city,phone_number,neighborhood,street,email,id_realstate);
 	o=Owner.findFirst("first_name = ?",new_firstName);
 
 	assertFalse(o==null);	

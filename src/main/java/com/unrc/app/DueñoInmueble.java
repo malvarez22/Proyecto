@@ -17,9 +17,9 @@ public class DueñoInmueble {
 		ob.set("street",street);		
 		ob.set("email",email);
                 b = Building.findById(id_building);
-		ob.set("id_building",re.getId());//para ver a que inmobiliaria pertence
+		ob.set("id_building",b.getId());//para ver a que inmobiliaria pertence
 		re = RealState.findById(id_realstate);
-		ob.set("id_realStates",re.getId());//para ver a que inmobiliaria pertence
+		ob.set("id_realstate",re.getId());//para ver a que inmobiliaria pertence
 		ob.saveIt();
 		
 	}
@@ -43,7 +43,7 @@ public class DueñoInmueble {
 			ob.set("street",street);		
 			ob.set("email",email);
 			re = RealState.findById(id_realstate);
-			ob.set("id_realStates",re.getId());//para ver a que inmobiliaria pertence
+			ob.set("id_realstate",re.getId());//para ver a que inmobiliaria pertence
                         b = Building.findById(id_building);
 			ob.set("id_building",b.getId());//para ver que inmueble posee 
 			ob.saveIt();

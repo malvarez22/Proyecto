@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.unrc.app.AdTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.101 sec <<< FAILURE!
-testInsertarAd(com.unrc.app.AdTest)  Time elapsed: 0.984 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.Anuncio.insertar(Anuncio.java:18)
-	at com.unrc.app.AdTest.testInsertarAd(AdTest.java:34)
-
-testEliminar(com.unrc.app.AdTest)  Time elapsed: 0.043 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.Anuncio.insertar(Anuncio.java:18)
-	at com.unrc.app.AdTest.testEliminar(AdTest.java:54)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.714 sec

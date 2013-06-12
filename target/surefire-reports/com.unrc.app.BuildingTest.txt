@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.unrc.app.BuildingTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.066 sec <<< FAILURE!
-testEliminar(com.unrc.app.BuildingTest)  Time elapsed: 0.031 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.Inmueble.insertar(Inmueble.java:22)
-	at com.unrc.app.BuildingTest.testEliminar(BuildingTest.java:68)
-
-testInsertarB(com.unrc.app.BuildingTest)  Time elapsed: 0.033 sec  <<< ERROR!
-java.lang.NullPointerException: null
-	at com.unrc.app.Inmueble.insertar(Inmueble.java:22)
-	at com.unrc.app.BuildingTest.testInsertarB(BuildingTest.java:39)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.157 sec

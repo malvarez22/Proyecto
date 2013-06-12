@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.unrc.app.OwnerTest" time="0.175" tests="5" errors="5" skipped="0" failures="0">
+<testsuite name="com.unrc.app.OwnerTest" time="0.465" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/i386"/>
@@ -39,7 +39,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-oracle/jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;test&quot;"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher &quot;clean&quot; &quot;install&quot;"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="es"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -56,44 +56,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testEliminar" classname="com.unrc.app.OwnerTest" time="0.049">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Dueño.insertar(Dueño.java:20)
-	at com.unrc.app.OwnerTest.testEliminar(OwnerTest.java:120)
-</error>
-    <system-out>eliminar 1
-</system-out>
-  </testcase>
-  <testcase name="testModificar" classname="com.unrc.app.OwnerTest" time="0.025">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Dueño.insertar(Dueño.java:20)
-	at com.unrc.app.OwnerTest.testModificar(OwnerTest.java:155)
-</error>
-    <system-out>modificar 1
-</system-out>
-  </testcase>
-  <testcase name="testInsertar1" classname="com.unrc.app.OwnerTest" time="0.026">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Dueño.insertar(Dueño.java:20)
-	at com.unrc.app.OwnerTest.testInsertar1(OwnerTest.java:40)
-</error>
-    <system-out>insertar 1
-</system-out>
-  </testcase>
-  <testcase name="testInsertar2" classname="com.unrc.app.OwnerTest" time="0.028">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Dueño.insertar(Dueño.java:20)
-	at com.unrc.app.OwnerTest.testInsertar2(OwnerTest.java:65)
-</error>
-    <system-out>insertar 2
-</system-out>
-  </testcase>
-  <testcase name="testInsertar3" classname="com.unrc.app.OwnerTest" time="0.047">
-    <error type="java.lang.NullPointerException:">java.lang.NullPointerException: null
-	at com.unrc.app.Dueño.insertar(Dueño.java:20)
-	at com.unrc.app.OwnerTest.testInsertar3(OwnerTest.java:91)
-</error>
-    <system-out>insertar 3
-</system-out>
-  </testcase>
+  <testcase name="testEliminar" classname="com.unrc.app.OwnerTest" time="0.121"/>
+  <testcase name="testModificar" classname="com.unrc.app.OwnerTest" time="0.09"/>
+  <testcase name="testInsertar1" classname="com.unrc.app.OwnerTest" time="0.082"/>
+  <testcase name="testInsertar2" classname="com.unrc.app.OwnerTest" time="0.065"/>
+  <testcase name="testInsertar3" classname="com.unrc.app.OwnerTest" time="0.107"/>
 </testsuite>
