@@ -32,8 +32,8 @@ public class Inmueble {
 		Building b=new Building();		
 		OwnerBuilding ob= new OwnerBuilding();
                 RealState re=new RealState();
-		ob=OwnerBuilding.findById(id);
-		if (ob!=null){
+		b=Building.findById(id);
+		if (b!=null){
 			b.set("city",city); 
 			b.set("neighborhood",neighborhood);
 			b.set("street",street);
